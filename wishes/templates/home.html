@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Alamelu 💖</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      text-align: center;
+      height: 100vh;
+    }
+
+    /* Background video */
+    video#bgVideo {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      filter: brightness(0.4) blur(2px);
+    }
+
+    /* Overlay gradient for smooth lighting */
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at top, rgba(255,182,193,0.3), rgba(255,105,180,0.5));
+      z-index: -1;
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 3.5rem;
+      color: #fff;
+      text-shadow: 0 0 20px #ff3f8e, 0 0 40px #ff7eb9;
+      margin-top: 2.5rem;
+      animation: glowPulse 2.5s infinite ease-in-out;
+    }
+
+    @keyframes glowPulse {
+      0%, 100% { text-shadow: 0 0 10px #ff3f8e, 0 0 20px #ff7eb9, 0 0 40px #ffb3c6; transform: scale(1); }
+      50% { text-shadow: 0 0 25px #ff4b8e, 0 0 60px #ff7eb9, 0 0 80px #fff; transform: scale(1.05); }
+    }
+
+    p.subtitle {
+      font-size: 1.2rem;
+      color: #fffafc;
+      margin-top: 0.3rem;
+    }
+
+    .play-btn {
+      background: #fff;
+      color: #ff3f8e;
+      border: none;
+      border-radius: 40px;
+      padding: 1rem 2.5rem;
+      font-size: 1.3rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 3rem;
+      box-shadow: 0 6px 20px rgba(255, 100, 150, 0.4);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .play-btn:hover {
+      background: #ffe4ec;
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(255, 100, 150, 0.6);
+    }
+
+    #spectrum {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      height: 150px;
+      margin-top: 2rem;
+      gap: 4px;
+    }
+
+    .bar {
+      width: 8px;
+      background: linear-gradient(180deg, #ff7eb9, #ff3f8e);
+      border-radius: 3px;
+      transition: height 0.1s ease;
+    }
+
+    .typing {
+      font-size: 1.4rem;
+      margin-top: 30px;
+      color: #ffe6f0;
+      border-right: 2px solid #fff;
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 6s steps(40, end), blink 0.6s step-end infinite alternate;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    footer {
+      font-size: 1.1rem;
+      margin-top: 3rem;
+      color: #fff4f7;
+    }
+
+    .balloon {
+      position: absolute;
+      bottom: -150px;
+      border-radius: 50%;
+      width: 60px;
+      height: 80px;
+      background: radial-gradient(circle, #ff9ec4, #ff4b8e);
+      animation: rise 10s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes rise {
+      from { transform: translateY(0); }
+      to { transform: translateY(-110vh); }
+    }
+
+    .balloon::before {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      width: 2px;
+      height: 20px;
+      background: #fff;
+      transform: translateX(-50%);
+    }
+
+    .heart {
+      position: fixed;
+      bottom: -10px;
+      color: red;
+      font-size: 16px;
+      animation: floatUp 6s ease-in infinite;
+      opacity: 0.8;
+      z-index: 1;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-800px) scale(1.5); opacity: 0; }
+    }
+
+    canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body>
+  <!-- Video background -->
+  <video autoplay muted loop id="bgVideo">
+    <source src="/static/wishes/video/soba.mp4" type="video/mp4">
+  </video>
+  <div class="overlay"></div>
+
+  <canvas id="confetti"></canvas>
+
+  <h1>🎉 Happy Birthday Alamelu 🎉</h1>
+  <p class="subtitle">My gem 💎, my smile, my world 💖</p>
+
+  <button class="play-btn" onclick="startMusic()">💗 My Gem 💗</button>
+  <div id="spectrum"></div>
+
+  <div class="typing">You are my soul, my everything 💖</div>
+  <footer><p>With love, <strong>Arasu</strong> 💌</p></footer>
+Thiruchitrambalam.mp3
+  <audio id="birthdaySong" src="/static/wishes/audio/life_of_ram.mp3"></audio>
+
+  <script>
+    // Hearts
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerHTML = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = Math.random() * 3 + 3 + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+    setInterval(createHeart, 400);
+
+
+    // Confetti
+    const canvas = document.getElementById('confetti');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const confettiColors = ['#ff7eb9', '#ff65a3', '#7afcff', '#feff9c', '#fff740'];
+    let confetti = [];
+
+    class ConfettiPiece {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * -canvas.height;
+        this.size = Math.random() * 6 + 2;
+        this.color = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+        this.speed = Math.random() * 3 + 1;
+      }
+      update() { this.y += this.speed; if (this.y > canvas.height) this.y = 0; }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < 100; i++) confetti.push(new ConfettiPiece());
+    function animateConfetti() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      confetti.forEach(c => { c.update(); c.draw(); });
+      requestAnimationFrame(animateConfetti);
+    }
+    animateConfetti();
+
+    // Spectrum Visualizer
+    const spectrumContainer = document.getElementById('spectrum');
+    for (let i = 0; i < 64; i++) {
+      const bar = document.createElement('div');
+      bar.classList.add('bar');
+      spectrumContainer.appendChild(bar);
+    }
+
+    async function startMusic() {
+      const song = document.getElementById('birthdaySong');
+      await song.play();
+
+      const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const src = audioCtx.createMediaElementSource(song);
+      const analyser = audioCtx.createAnalyser();
+      src.connect(analyser);
+      analyser.connect(audioCtx.destination);
+      analyser.fftSize = 128;
+
+      const bufferLength = analyser.frequencyBinCount;
+      const dataArray = new Uint8Array(bufferLength);
+      const bars = document.querySelectorAll('.bar');
+      const title = document.querySelector('h1');
+
+      function animate() {
+        requestAnimationFrame(animate);
+        analyser.getByteFrequencyData(dataArray);
+
+        bars.forEach((bar, i) => {
+          const height = dataArray[i] / 2.5;
+          bar.style.height = `${height}px`;
+        });
+
+        // Pulse glow with sound
+        const avg = dataArray.reduce((a, b) => a + b, 0) / dataArray.length;
+        const scale = 1 + avg / 400;
+        title.style.transform = `scale(${scale})`;
+        title.style.textShadow = `0 0 ${10 + avg / 8}px #ff3f8e, 0 0 ${30 + avg / 5}px #fff`;
+      }
+      animate();
+
+      alert("🎉 Surprise Alamelu! Your special song is playing 💓");
+    }
+  </script>
+</body>
+</html>

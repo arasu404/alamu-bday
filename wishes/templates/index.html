@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome ✨</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap');
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ffb6c1, #ff9aa2, #ffc3a0);
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      position: relative;
+    }
+
+    /* 🎀 Background image (your uploaded photo) */
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url('/static/wishes/images/bday_bg.png') center/cover no-repeat;
+      opacity: 0.30;
+      animation: bgFloat 9s ease-in-out infinite alternate;
+      z-index: -2;
+    }
+
+    @keyframes bgFloat {
+      0% { transform: scale(1) translateY(0); }
+      100% { transform: scale(1.05) translateY(-10px); }
+    }
+
+    /* 🎇 Particles */
+    .particle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      animation: floatUp linear infinite;
+      filter: blur(1px);
+      z-index: -1;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-120vh) scale(1.4); opacity: 0; }
+    }
+
+    /* Main container */
+    .container {
+      background: rgba(255, 255, 255, 0.18);
+      padding: 2.5rem 3.2rem;
+      border-radius: 22px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(255, 105, 180, 0.35);
+      text-align: center;
+      animation: fadeIn 1.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.3rem;
+      color: #1f6feb;
+      text-shadow: 0 0 10px rgba(255,255,255,0.8);
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 12px #5bb5ff, 0 0 22px #a8e4ff; }
+      to   { text-shadow: 0 0 20px #fff, 0 0 40px #5bb5ff; }
+    }
+
+    input {
+      margin-top: 1rem;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 10px;
+      width: 240px;
+      text-align: center;
+      font-size: 1.1rem;
+      background: rgba(255,255,255,0.85);
+      color: #1f6feb;
+      font-weight: bold;
+      transition: 0.3s ease;
+    }
+
+    input:focus {
+      box-shadow: 0 0 12px rgba(31,111,235,0.6);
+      transform: scale(1.06);
+    }
+
+    button {
+      margin-top: 1rem;
+      padding: 0.8rem 1.6rem;
+      border: none;
+      border-radius: 12px;
+      background: #ffffff;
+      color: #ff4e88;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 5px 18px rgba(255, 100, 150, 0.45);
+    }
+
+    button:hover {
+      background: #ffe3ec;
+      transform: scale(1.08);
+      box-shadow: 0 8px 25px rgba(255, 100, 150, 0.65);
+    }
+
+    .error {
+      margin-top: 1rem;
+      font-size: 1rem;
+      display: none;
+      color: #1f6feb;
+      font-weight: bold;
+      animation: shake 0.4s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25%      { transform: translateX(-5px); }
+      75%      { transform: translateX(5px); }
+    }
+
+    /* Decorations */
+    .decor {
+      position: absolute;
+      font-size: 1.8rem;
+      animation: drift 6s ease-in-out infinite;
+      opacity: 0.9;
+      z-index: -1;
+    }
+
+    @keyframes drift {
+      0% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(8deg); }
+      100% { transform: translateY(0) rotate(-8deg); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Floating decorations -->
+  <div class="decor" style="top:10%; left:10%;">🎂</div>
+  <div class="decor" style="top:20%; right:15%;">🍰</div>
+  <div class="decor" style="bottom:15%; left:20%;">🎀</div>
+  <div class="decor" style="bottom:10%; right:10%;">💫</div>
+
+  <!-- Particles -->
+  <script>
+    for (let i = 0; i < 35; i++) {
+      const p = document.createElement('div');
+      p.classList.add('particle');
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.animationDuration = 4 + Math.random() * 5 + 's';
+      p.style.background = `rgba(255, ${150 + Math.random()*100}, ${200 + Math.random()*55}, 0.9)`;
+      document.body.appendChild(p);
+    }
+  </script>
+
+  <!-- Main Box -->
+  <div class="container">
+    <h1>✨ Hey !, Who are you ? ✨</h1>
+
+    <input type="text" id="nickname" placeholder="Type your nickname..." />
+    <br>
+
+    <button onclick="checkName()">Enter</button>
+
+    <div class="error" id="error"></div>
+  </div>
+
+  <!-- Background Music (auto fade-in) -->
+  <audio id="softMusic" src="/static/wishes/audio/Thiruchitrambalam.mp3" autoplay muted></audio>
+
+  <script>
+    // Fade-in music after autoplay starts
+    window.addEventListener("load", () => {
+      const audio = document.getElementById("softMusic");
+      audio.volume = 0;
+
+      setTimeout(() => {
+        audio.muted = false;
+
+        let vol = 0;
+        const fade = setInterval(() => {
+          if (vol < 0.35) {
+            vol += 0.02;
+            audio.volume = vol;
+          } else {
+            clearInterval(fade);
+          }
+        }, 200);
+      }, 600);
+    });
+
+    // Nickname Logic
+    let attempts = 0;
+    const messages = [
+      "Hmm… are you sure, sweetie? 💖",
+      "Sita, don’t tease me 😜",
+      "Aww… wrong again 💌 try once more!"
+    ];
+
+    function checkName() {
+      const name = document.getElementById("nickname").value.trim().toLowerCase();
+      const error = document.getElementById("error");
+
+      if (name === "alamu") {
+        setTimeout(() => {
+          window.location.href = "/cake/";
+        }, 900);
+      } else {
+        error.style.display = "block";
+        error.textContent = messages[attempts % messages.length];
+        attempts++;
+      }
+    }
+  </script>
+
+</body>
+</html>
