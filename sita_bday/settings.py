@@ -6,7 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'replace-this-with-a-secure-key'   # CHANGE before production
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [https://alamu.onrender.com/]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
